@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+double rand_mid(int low, int high)
+{
+   return (double)(low+rand()%(high-low+1));
+}
+
+int a,b,c,d,e;
+
+int main()
+{
+    unsigned int N = 1000;
+    FILE * data = fopen("new_data.csv", "w+");
+    for(int i = 0; i < N; i++)
+    {
+	// Name
+	fprintf(data,"Bob%d\t",i);
+
+	// Credit Score
+	fprintf(data, "%d\t", 800);
+
+	a = rand_mid(350,900);
+	b = rand_mid(12,170);
+	c = rand_mid(30,70);
+	d = rand_mid(80,150);
+	e = rand_mid(170, 400);
+	
+	if ((b+c+d+e) > a)
+	{
+	    a += a - (b+c+d+e);
+	}
+
+	// Weekly income
+	fprintf(data, "%d\t", a);
+	// Other
+	
+	fprintf(data, "%d\t", b);
+	// Commute
+	
+	fprintf(data, "%d\t", c);
+	// Food
+	
+	fprintf(data, "%d\t", d);
+
+	// Rent
+	fprintf(data, "%d\n", e);
+	
+    }
+    return (0);
+}
